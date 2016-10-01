@@ -10,7 +10,7 @@
 
 #### see it works
 
-[here](localhost:8000)
+[here](http://localhost:8000)
 
 ## what I think is cool
 1. load balances between process
