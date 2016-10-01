@@ -21,7 +21,8 @@ const errorIncr = incrementer(0);
 app.get('/', (req, res, next) => {
   successIncr();
   return res.json({
-    ID, 
+    ID,
+    hostname: process.env.HOSTNAME,
     data: {
       errorCount: errorIncr.count(),
       successCount: successIncr.count(),

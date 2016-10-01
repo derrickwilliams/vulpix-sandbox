@@ -5,32 +5,17 @@ services:
     links:
       - node1:node1
       - node2:node2
-      # - node3:node3
     ports:
-      - "80:80"
+      - "8000:80"
 
   node1:
-    image: ddubs/vulpix
+    image: ddubs/vulpix-node-example
     # build: ./node
-    # links:
-    #   - redis
     ports:
       - "8001:8080"
     
   node2:
-    image: ddubs/vulpix
+    image: ddubs/vulpix-node-example
     # build: ./node
-    # links:
-    #   - redis
     ports:
       - "8002:8080"
-# node3:
-#   build: ./node
-#   links:
-#     - redis
-#   ports:
-#     - "8080"        
-# redis:
-#   image: redis
-#   ports:
-#     - "6379"
