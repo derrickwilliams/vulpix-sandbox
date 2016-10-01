@@ -8,6 +8,10 @@
 
 `docker-compose up`
 
+#### see it works
+
+[here](localhost:8000)
+
 ## what I think is cool
 1. load balances between process
 2. failover
