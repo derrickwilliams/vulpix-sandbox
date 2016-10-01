@@ -1,28 +1,35 @@
-var express = require('express'),
-    http = require('http'),
-    redis = require('redis');
+import express from 'express';
+const app = express();
 
-var app = express();
+const ID = (new Date()).getTime();
 
-console.log(process.env.REDIS_PORT_6379_TCP_ADDR + ':' + process.env.REDIS_PORT_6379_TCP_PORT);
+const incrementer = start => {
+  let counter = start;
+  
+  const incr = () => {
+    counter = counter + 1
+  }
 
-// APPROACH 1: Using environment variables created by Docker
-// var client = redis.createClient(
-// 	process.env.REDIS_PORT_6379_TCP_PORT,
-//   	process.env.REDIS_PORT_6379_TCP_ADDR
-// );
+  incr.count = () => counter;
 
-// APPROACH 2: Using host entries created by Docker in /etc/hosts (RECOMMENDED)
-var client = redis.createClient('6379', 'redis');
+  return incr;
+}
 
+const successIncr = incrementer(0);
+const errorIncr = incrementer(0);
 
-app.get('/', function(req, res, next) {
-  client.incr('counter', function(err, counter) {
-    if(err) return next(err);
-    res.send('This page has been viewed ' + counter + ' times!');
+app.get('/', (req, res, next) => {
+  successIncr();
+  return res.json({
+    ID, 
+    data: {
+      errorCount: errorIncr.count(),
+      successCount: successIncr.count(),
+      msg: 'Hello'
+    }
   });
 });
 
-http.createServer(app).listen(process.env.PORT || 8080, function() {
+app.listen(process.env.PORT || 8080, function() {
   console.log('Listening on port ' + (process.env.PORT || 8080));
 });
