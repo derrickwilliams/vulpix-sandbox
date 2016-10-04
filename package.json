@@ -1,0 +1,23 @@
+{
+  "name": "vulpix",
+  "version": "0.0.1",
+  "description": "experimentation with a platform for controlling services",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/derrickwilliams/vulpix.git"
+  },
+  "author": "derrickawilliams@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/derrickwilliams/vulpix/issues"
+  },
+  "homepage": "https://github.com/derrickwilliams/vulpix#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.16.0"
+  }
+}

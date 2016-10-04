@@ -19,3 +19,14 @@ services:
     # build: ./node
     ports:
       - "8002:8080"
+
+  cadvisor:
+    image: google/cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker:/var/lib/docker:ro
+    ports:
+      - "9500:8080"
+    container_name: cadvisor
